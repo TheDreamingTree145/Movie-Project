@@ -1,0 +1,6 @@
+class Movie < ApplicationRecord
+  has_many :user_movies
+  has_many :users, :through => :user_movies
+  has_many :characters
+  has_many :actors, :through => :characters
+end
