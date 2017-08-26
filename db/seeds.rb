@@ -10,7 +10,7 @@
   User.create(email: Faker::Internet.email, password: Faker::Internet.password)
 end
 
-@user = User.first
+@user = User.create(email: "dustin@mail.com", password: "password")
 @user_2 = User.last
 
 5.times do
