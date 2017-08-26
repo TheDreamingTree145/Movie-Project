@@ -1,0 +1,13 @@
+<h1>Welcome, <%= current_user.email %></h1>
+
+<ul>
+  <% current_user.movies.each do |movie| %>
+  <li><h3><%= link_to movie.title, movie %></h3></li>
+    <% movie.characters.each do |character| %>
+      <li><%= link_to character.name, character %></li>
+    <% end %>
+    <% movie.actors.each do |actor| %>
+      <li><%= link_to actor.name, actor %></li>
+    <% end %>
+  <% end %>
+</ul>
