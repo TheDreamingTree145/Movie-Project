@@ -2,7 +2,7 @@
 
 <ul>
   <% current_user.movies.each do |movie| %>
-    <h3>Title: <%= link_to movie.title, movie %></h3><
+    <h3>Title: <%= link_to movie.title, movie %></h3>
     <% movie.characters.each do |character| %>
       <li>Character: <%= link_to character.name, character %>, Played By: <%= link_to character.actor.name, character.actor %></li>
      <% end %>
