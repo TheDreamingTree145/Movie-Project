@@ -1,0 +1,10 @@
+<h1>List of Active Users!</h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <li><%= link_to user.email, user_path(user) %></li>
+      <ul>
+        <li><%= user.movies.count %></li>
+      </ul>
+  <% end %>
+</ul>

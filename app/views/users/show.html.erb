@@ -1,7 +1,11 @@
-<h1>Welcome, <%= current_user.email %></h1>
+<% if current_user == @user %>
+  <h1>Welcome, <%= @user.email %></h1>
+<% else %>
+  <h1> <%= @user.email %>'s Movies!</h1>
+<% end %>
 
 <ul>
-  <% current_user.movies.each do |movie| %>
+  <% @user.movies.each do |movie| %>
     <h3>Title: <%= link_to movie.title, movie %></h3>
     <% movie.characters.each do |character| %>
       <li>Character: <%= link_to character.name, character %>, Played By: <%= link_to character.actor.name, character.actor %></li>
