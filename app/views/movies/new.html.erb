@@ -25,9 +25,6 @@
   <%= f.fields_for :characters do |character| %>
     Character <%= character.label :name %>
     <%= character.text_field :name %><br>
-    <%= character.fields_for :actor do |act| %>
-      Played by: <%= act.text_field :name %><br>
-    <% end %>
   <% end %>
   <%= f.submit %>
 <% end %>

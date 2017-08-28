@@ -8,6 +8,7 @@ class Movie < ApplicationRecord
 
   def character_attributes=(character_attributes)
     character_attributes.values do
+      binding.pry
     end
   end
 end
