@@ -13,13 +13,15 @@ end
 @user = User.create(email: "dustin@mail.com", password: "password")
 @user_2 = User.last
 
+
 5.times do
-  @user.movies.create(title: Faker::Book.title, release_date: rand(1920..2018))
-  @user_2.movies.create(title: Faker::Book.title, release_date: rand(1920..2018))
+  @user.movies.create(title: Faker::Book.title, release_date: rand(1920..2018), critic_rating: rand(0..100), awards: rand(0..20))
+  @user_2.movies.create(title: Faker::Book.title, release_date: rand(1920..2018), critic_rating: rand(0..100), awards: rand(0..20))
 end
 
 @movie = Movie.first
 @movie_2 = Movie.last
+
 
 gender_choice = ["Male", "Female"]
 
