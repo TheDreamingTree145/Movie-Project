@@ -21,6 +21,13 @@
   <%= f.label :critic_rating %>
   <%= f.number_field :critic_rating, {min: 0, max: 100} %><br>
   <%= f.label :awards %>
-  <%= f.number_field :awards, {min: 0, max: 50} %>
+  <%= f.number_field :awards, {min: 0, max: 50} %><br>
+  <%= f.fields_for :characters do |character| %>
+    Character <%= character.label :name %>
+    <%= character.text_field :name %><br>
+    <%= character.fields_for :actor do |act| %>
+      Played by: <%= act.text_field :name %><br>
+    <% end %>
+  <% end %>
   <%= f.submit %>
 <% end %>
