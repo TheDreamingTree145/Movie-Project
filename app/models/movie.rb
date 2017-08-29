@@ -12,7 +12,7 @@ class Movie < ApplicationRecord
     self.save
     if !characters_attributes.values[0]['name'].empty?
       character_1 = Character.new(name: characters_attributes.values[0]['name'], movie_id: self.id)
-      character_1.actor = Actor.new(name: characters_attributes.values[0]['actor_attributes']['name'], gender: characters_attributes.values[0]['actor_attributes']['gender'], age: characters_attributes.values[0]['actor_attributes']['age'])
+      character_1.actor = Actor.find_or_initialize_by(id: characters_attributes.values[0]['actor_attributes']['id'], name: characters_attributes.values[0]['actor_attributes']['name'], gender: characters_attributes.values[0]['actor_attributes']['gender'], age: characters_attributes.values[0]['actor_attributes']['age'])
     end
     if !characters_attributes.values[1]['name'].empty?
       character_2 = Character.new(name: characters_attributes.values[1]['name'], movie_id: self.id)
@@ -20,7 +20,7 @@ class Movie < ApplicationRecord
     end
     if !characters_attributes.values[2]['name'].empty?
       character_3 = Character.new(name: characters_attributes.values[2]['name'], movie_id: self.id)
-      character_3.actor = Actor.new(name: characters_attributes.values[2]['actor_attributes']['name'], gender: characters_attributes.values[2]['actor_attributes']['gender'], age: characters_attributes.values[2]['actor_attributes']['age'])
+      character_3.actor = Actor.find_or_initialize_by(id: characters_attributes.values[2]['actor_attributes']['id'], name: characters_attributes.values[2]['actor_attributes']['name'], gender: characters_attributes.values[2]['actor_attributes']['gender'], age: characters_attributes.values[2]['actor_attributes']['age'])
     end
     self.characters << character_1 if character_1
     self.characters << character_2 if character_2
