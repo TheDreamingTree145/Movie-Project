@@ -3,10 +3,10 @@ class Movie < ApplicationRecord
   has_many :users, :through => :user_movies
   has_many :characters
   has_many :actors, :through => :characters
+  has_many :movie_genres
+  has_many :genres, :through => :movie_genres
   accepts_nested_attributes_for :characters
   validates_presence_of :title
-
-  GENRES = ["Action", "Comedy", "Drama", "Thriller", "Suspense", "Romance", "Horror", "Documentary"]
 
   def characters_attributes=(characters_attributes)
     self.save
