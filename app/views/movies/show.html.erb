@@ -1,13 +1,16 @@
 <h1><%= @movie.title %></h1><br>
 
-<ul>
-<% @movie.characters.each do |character| %>
-  <li><%= link_to character.name, character %></li>
-<% end %>
-</ul>
+<h2><%= link_to @movie.genre.title, @movie.genre %></h2>
 
-<ul>
-<% @movie.actors.each do |actor| %>
-  <li><%= link_to actor.name, actor %></li>
+<div class="movie_info">
+  <%= @movie.release_date %>
+</div>
+
+
+<h3>Characters: </h3>
+<% @movie.characters.each do |character| %>
+  <label for="character[name]">Character: </label>
+  <%= link_to character.name, character %>
+  <label for="character[actor][name]">Played By: </label>
+  <%= link_to character.actor.name, character.actor %><br><br>
 <% end %>
-</ul>
