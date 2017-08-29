@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   resources :characters
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks"}
-  resources :users 
+  resources :users
+  resources :genres, only: [:index, :show]
 
   resources :movies
   resources :actors
