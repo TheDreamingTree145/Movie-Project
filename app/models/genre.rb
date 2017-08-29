@@ -1,4 +1,5 @@
 class Genre < ApplicationRecord
-  has_many :movie_genres
-  has_many :movies, :through => :movie_genres
+  has_many :movies
+
+  #How to start application with instances of genres
 end

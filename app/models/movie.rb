@@ -3,8 +3,7 @@ class Movie < ApplicationRecord
   has_many :users, :through => :user_movies
   has_many :characters
   has_many :actors, :through => :characters
-  has_many :movie_genres
-  has_many :genres, :through => :movie_genres
+  belongs_to :genre
   accepts_nested_attributes_for :characters
   validates_presence_of :title
 

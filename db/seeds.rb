@@ -6,17 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-10.times do
-  User.create(email: Faker::Internet.email, password: Faker::Internet.password)
+Genres = ["Action", "Comedy", "Drama", "Documentary", "Horror", "Indie", "Sci-Fi", "Suspense", "Thriller"]
+
+Genres.each do |genre_name|
+  Genre.create(title: genre_name)
 end
 
-@user = User.create(email: "dustin@mail.com", password: "password")
+10.times do
+  @user = User.create(email: Faker::Internet.email, password: Faker::Internet.password)
+end
+
+@user = User.first
 @user_2 = User.last
 
-
 5.times do
-  @user.movies.create(title: Faker::Book.title, release_date: rand(1920..2018), critic_rating: rand(0..100), awards: rand(0..20))
-  @user_2.movies.create(title: Faker::Book.title, release_date: rand(1920..2018), critic_rating: rand(0..100), awards: rand(0..20))
+  @user.movies.create(title: Faker::Book.title, release_date: rand(1920..2018), critic_rating: rand(0..100), awards: rand(0..20), genre_id: Genre.all.ids.sample)
+  @user_2.movies.create(title: Faker::Book.title, release_date: rand(1920..2018), critic_rating: rand(0..100), awards: rand(0..20), genre_id: Genre.all.ids.sample)
 end
 
 @movie = Movie.first
@@ -26,12 +31,12 @@ end
 gender_choice = ["Male", "Female"]
 
 10.times do
-  Actor.create(name: Faker::Name.name, gender: gender_choice.sample)
+  Actor.create(name: Faker::Name.name, gender: gender_choice.sample, age: rand(1..100))
 end
 
 3.times do
-  @character = @movie.characters.create(name: Faker::Name.first_name, actor_id: Actor.all.sample.id)
-  @character_2 = @movie_2.characters.create(name: Faker::Name.first_name, actor_id: Actor.all.sample.id)
+  @character = Character.create(name: Faker::Name.first_name, actor_id: Actor.all.sample.id, movie_id: @movie.id )
+  @character_2 = Character.create(name: Faker::Name.first_name, actor_id: Actor.all.sample.id, movie_id: @movie_2.id)
   @character.save
   @character_2.save
 end
