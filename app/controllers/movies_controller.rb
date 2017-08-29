@@ -8,12 +8,15 @@ class MoviesController < ApplicationController
 
   def new
     @movie = Movie.new
-    3.times {@movie.characters.build}
+    3.times do
+      character = @movie.characters.build
+      character.build_actor
+    end
   end
 
   def create
     binding.pry
-    @movie = current_user.movies.build(movie_params)
+    @movie = current_user.movies.create(movie_params)
     if @movie.save
       redirect_to @movie
     else
@@ -28,7 +31,7 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :release_date, :critic_rating, :awards, :character_attributes)
+    params.require(:movie).permit(:title, :release_date, :critic_rating, :awards, characters_attributes:[:name, actor_attributes:[:name]])
   end
 
 end
