@@ -26,7 +26,8 @@
     Character <%= character.label :name %>
     <%= character.text_field :name %><br>
     <%= character.fields_for :actor do |act| %>
-      Actor <%= act.text_field :name %><br>
+      Create New Actor <%= act.text_field :name %><br>
+      Or Choose Existing <%= act.collection_select :id, Actor.all, :id, :name, :prompt => true %><br>
       <%= act.label :gender, "Male" %>
       <%= act.radio_button :gender, "Male" %>
       <%= act.label :gender, "Female" %>
