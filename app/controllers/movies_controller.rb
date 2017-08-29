@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
     @movie = Movie.new
     3.times do
       character = @movie.characters.build
-      character.build_actor
+      actor = character.build_actor
     end
   end
 
