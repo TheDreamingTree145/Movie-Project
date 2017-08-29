@@ -9,20 +9,32 @@ class Movie < ApplicationRecord
 
   def characters_attributes=(characters_attributes)
     self.save
-    if !characters_attributes.values[0]['name'].empty?
-      character_1 = Character.new(name: characters_attributes.values[0]['name'], movie_id: self.id)
-      character_1.actor = Actor.find_or_initialize_by(id: characters_attributes.values[0]['actor_attributes']['id'], name: characters_attributes.values[0]['actor_attributes']['name'], gender: characters_attributes.values[0]['actor_attributes']['gender'], age: characters_attributes.values[0]['actor_attributes']['age'])
+    character_1 = Character.new(name: characters_attributes.values[0]['name'], movie_id: self.id)
+    character_2 = Character.new(name: characters_attributes.values[1]['name'], movie_id: self.id)
+    character_3 = Character.new(name: characters_attributes.values[2]['name'], movie_id: self.id)
+    if characters_attributes.values[0]['actor_id'].empty?
+      @actor = Actor.create(name: characters_attributes.values[0]['actor_attributes']['name'], gender: characters_attributes.values[0]['actor_attributes']['gender'], age: characters_attributes.values[0]['actor_attributes']['age'])
+      character_1.actor = @actor
+      character_1.save
+    else
+      character_1.actor = Actor.find_by(id: characters_attributes.values[0]['actor_id'])
+      character_1.save
     end
-    if !characters_attributes.values[1]['name'].empty?
-      character_2 = Character.new(name: characters_attributes.values[1]['name'], movie_id: self.id)
-      character_2.actor = Actor.new(name: characters_attributes.values[1]['actor_attributes']['name'], gender: characters_attributes.values[1]['actor_attributes']['gender'], age: characters_attributes.values[1]['actor_attributes']['age'])
+    if characters_attributes.values[1]['actor_id'].empty?
+      @actor = Actor.create(name: characters_attributes.values[1]['actor_attributes']['name'], gender: characters_attributes.values[1]['actor_attributes']['gender'], age: characters_attributes.values[1]['actor_attributes']['age'])
+      character_2.actor = @actor
+      character_2.save
+    else
+      character_2.actor = Actor.find_by(id: characters_attributes.values[1]['actor_id'])
+      character_2.save
     end
-    if !characters_attributes.values[2]['name'].empty?
-      character_3 = Character.new(name: characters_attributes.values[2]['name'], movie_id: self.id)
-      character_3.actor = Actor.find_or_initialize_by(id: characters_attributes.values[2]['actor_attributes']['id'], name: characters_attributes.values[2]['actor_attributes']['name'], gender: characters_attributes.values[2]['actor_attributes']['gender'], age: characters_attributes.values[2]['actor_attributes']['age'])
+    if characters_attributes.values[2]['actor_id'].empty?
+      @actor = Actor.create(name: characters_attributes.values[2]['actor_attributes']['name'], gender: characters_attributes.values[2]['actor_attributes']['gender'], age: characters_attributes.values[2]['actor_attributes']['age'])
+      character_3.actor = @actor
+      character_3.save
+    else
+      character_3.actor = Actor.find_by(id: characters_attributes.values[2]['actor_id'])
+      character_3.save
     end
-    self.characters << character_1 if character_1
-    self.characters << character_2 if character_2
-    self.characters << character_3 if character_3
   end
 end
