@@ -47,6 +47,13 @@ class MoviesController < ApplicationController
     end
   end
 
+  def remove
+    binding.pry
+    @movie = Movie.find_by(id: params[:movie_id])
+    current_user.remove_movie(@movie)
+    redirect_to current_user, alert: "Successfully removed movie!"
+  end
+
   private
 
   def movie_params

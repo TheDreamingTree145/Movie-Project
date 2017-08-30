@@ -20,4 +20,8 @@ class User < ApplicationRecord
       self.movies << movie
     end
   end
+
+  def remove_movie(movie)
+    self.movies.delete(movie)
+  end
 end

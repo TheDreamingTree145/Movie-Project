@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   post '/movies/:id/add', to: 'movies#add'
+  post '/movies/:id/remove', to: 'movies#remove'
   resources :characters
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks"}
   resources :users
