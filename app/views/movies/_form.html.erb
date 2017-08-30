@@ -1,0 +1,42 @@
+<% if @movie.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@movie.errors.count, "error") %>
+      prohibited this post from being saved:
+    </h2>
+
+    <ul>
+    <% @movie.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<br>
+<%= form_for @movie do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %><br>
+  <%= f.label :release_date %>
+  <%= f.text_field :release_date %><br>
+  <%= f.label :critic_rating %>
+  <%= f.number_field :critic_rating, {min: 0, max: 100} %><br>
+  <%= f.label :awards %>
+  <%= f.number_field :awards, {min: 0, max: 50} %><br>
+  <%= f.hidden_field :created_by, :value => current_user.email %>
+  Genre: <%= f.collection_select :genre_id, Genre.all, :id, :title %><br><br>
+  <%= f.fields_for :characters do |character| %>
+    Character <%= character.label :name %>
+    <%= character.text_field :name %><br>
+    Choose Existing Actor <%= character.collection_select :actor_id, Actor.all, :id, :name, :prompt => true %><br>
+    <%= character.fields_for :actor do |act| %>
+      Create New Actor <%= act.text_field :name %><br>
+      <%= act.label :gender, "Male" %>
+      <%= act.radio_button :gender, "Male" %>
+      <%= act.label :gender, "Female" %>
+      <%= act.radio_button :gender, "Female" %><br>
+      <%= act.label :age %>
+      <%= act.number_field :age, {min: 1, max: 100} %><br><br>
+    <% end %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
