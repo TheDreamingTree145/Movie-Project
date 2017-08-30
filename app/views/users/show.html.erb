@@ -1,12 +1,14 @@
 <% if current_user == @user %>
-  <h1>Welcome, <%= @user.email %></h1>
+  <h1>Welcome, <%= current_user.email %></h1>
+  You have currently added <%= current_user.movies.count %> movie!<br>
+  Number of different actors: <%= unique_actors %>
 <% else %>
   <h1> <%= @user.email %>'s Movies!</h1>
 <% end %>
 <br>
-<%= link_to "All Movies", movies_path %>
 
-<h2>Movies You Have Added</h2>
+
+<h2>Movies Added</h2>
 <ul>
   <% @user.movies.each do |movie| %>
     <h3>Title: <%= link_to movie.title, movie %></h3>
