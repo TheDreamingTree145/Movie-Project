@@ -1,0 +1,8 @@
+<h1><%= @actor.name %></h1>
+<ul>
+  <li>Gender: <%= @actor.gender %></li>
+  <li>Age: <%= @actor.age %></li>
+</ul>
+
+<h3>Movies Appearing In</h3>
+<%= render partial: 'actor', locals: {actor: @actor} %>

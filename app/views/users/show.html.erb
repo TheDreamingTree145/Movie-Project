@@ -1,6 +1,6 @@
 <% if current_user == @user %>
   <h1>Welcome, <%= current_user.email %></h1>
-  You have currently added <%= current_user.movies.count %> movie!<br>
+  You have currently added <%= current_user.movies.count %> movies!<br>
 <% else %>
   <h1> <%= @user.email %>'s Movies!</h1>
 <% end %>
