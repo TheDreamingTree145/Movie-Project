@@ -22,6 +22,7 @@
   <%= f.number_field :critic_rating, {min: 0, max: 100} %><br>
   <%= f.label :awards %>
   <%= f.number_field :awards, {min: 0, max: 50} %><br>
+  <%= f.hidden_field :created_by, :value => current_user.email %>
   Genre: <%= f.collection_select :genre_id, Genre.all, :id, :title %><br><br>
   <%= f.fields_for :characters do |character| %>
     Character <%= character.label :name %>

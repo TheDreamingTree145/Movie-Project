@@ -4,6 +4,8 @@
   <h1> <%= @user.email %>'s Movies!</h1>
 <% end %>
 
+
+<h2>Movies You Have Added</h2>
 <ul>
   <% @user.movies.each do |movie| %>
     <h3>Title: <%= link_to movie.title, movie %></h3>
