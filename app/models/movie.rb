@@ -6,6 +6,7 @@ class Movie < ApplicationRecord
   belongs_to :genre
   accepts_nested_attributes_for :characters
   validates_presence_of :title
+  validates_uniqueness_of :title
 
   def characters_attributes=(characters_attributes)
     self.save
