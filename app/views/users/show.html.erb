@@ -1,6 +1,5 @@
 <% if current_user == @user %>
   <h1>Welcome, <%= @user.email %></h1>
-  <%= link_to "Create New Movie", new_movie_path %>
 <% else %>
   <h1> <%= @user.email %>'s Movies!</h1>
 <% end %>

@@ -2,16 +2,16 @@
   <div class="navbar-class">
     <div class="container">
         <% if user_signed_in? %>
-          <%= link_to "My Page", current_user %>
-          <%= link_to "Movies", movies_path %>
-          <%= link_to "Actors", actors_path %>
-          <%= link_to "Genres", genres_path %>
-          <%= link_to "Create New Movie", new_movie_path %>
-          <%= link_to "Create New Actor", new_actor_path %>
-          <%= link_to "Sign Out", destroy_user_session_path, method: :delete  %>
+          <%= link_to "My Page", current_user %> &emsp;
+          <%= link_to "Movies", movies_path %> &emsp;
+          <%= link_to "Actors", actors_path %> &emsp;
+          <%= link_to "Genres", genres_path %> &emsp;
+          <%= link_to "Create New Movie", new_movie_path %> &emsp;
+          <%= link_to "Create New Actor", new_actor_path %> &emsp;
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete  %> &emsp;
         <% else %>
-          <%= link_to "Sign Up", new_user_registration_path %>
-          <%= link_to "Sign In", new_user_session_path %>
+          <%= link_to "Sign Up", new_user_registration_path %> &emsp;
+          <%= link_to "Sign In", new_user_session_path %> &emsp;
           <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
         <% end %>
     </div>
