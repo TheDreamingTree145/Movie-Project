@@ -10,9 +10,9 @@ class Movie < ApplicationRecord
 
   def characters_attributes=(characters_attributes)
     self.save
-    character_1 = Character.new(name: characters_attributes.values[0]['name'], movie_id: self.id)
-    character_2 = Character.new(name: characters_attributes.values[1]['name'], movie_id: self.id)
-    character_3 = Character.new(name: characters_attributes.values[2]['name'], movie_id: self.id)
+    character_1 = Character.find_or_initialize_by(name: characters_attributes.values[0]['name'], movie_id: self.id)
+    character_2 = Character.find_or_initialize_by(name: characters_attributes.values[1]['name'], movie_id: self.id)
+    character_3 = Character.find_or_initialize_by(name: characters_attributes.values[2]['name'], movie_id: self.id)
     if characters_attributes.values[0]['actor_id'].empty?
       @actor = Actor.create(name: characters_attributes.values[0]['actor_attributes']['name'], gender: characters_attributes.values[0]['actor_attributes']['gender'], age: characters_attributes.values[0]['actor_attributes']['age'])
       character_1.actor = @actor
