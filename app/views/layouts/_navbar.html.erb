@@ -6,6 +6,8 @@
           <%= link_to "Movies", movies_path %>
           <%= link_to "Actors", actors_path %>
           <%= link_to "Genres", genres_path %>
+          <%= link_to "Create New Movie", new_movie_path %>
+          <%= link_to "Create New Actor", new_actor_path %>
           <%= link_to "Sign Out", destroy_user_session_path, method: :delete  %>
         <% else %>
           <%= link_to "Sign Up", new_user_registration_path %>
