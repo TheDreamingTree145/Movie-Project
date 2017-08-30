@@ -1,12 +1,11 @@
-<% if @movie.errors.any? %>
+<% if movie.errors.any? %>
   <div id="error_explanation">
     <h2>
-      <%= pluralize(@movie.errors.count, "error") %>
+      <%= pluralize(movie.errors.count, "error") %>
       prohibited this post from being saved:
     </h2>
-
     <ul>
-    <% @movie.errors.full_messages.each do |msg| %>
+    <% movie.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
     </ul>
@@ -15,7 +14,7 @@
 <br>
 
 <% # Not sure how to handle edit form filling in both fields %>
-<%= form_for @movie do |f| %>
+<%= form_for movie do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %><br>
   <%= f.label :release_date %>
@@ -31,7 +30,7 @@
     <%= character.text_field :name %><br>
     Choose Existing Actor <%= character.collection_select :actor_id, Actor.all, :id, :name, :include_blank => "Select Actor" %><br>
     <%= character.fields_for :actor do |act| %>
-      Create New Actor <%= act.text_field :name %><br>
+      Create New Actor <%= act.text_field :name, :value => '' %><br>
       <%= act.label :gender, "Male" %>
       <%= act.radio_button :gender, "Male" %>
       <%= act.label :gender, "Female" %>

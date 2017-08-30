@@ -32,7 +32,11 @@ class MoviesController < ApplicationController
   end
 
   def update
-    @movie.update(movie_params)
+    if @movie.update(movie_params)
+      redirect_to @movie
+    else
+      render :new
+    end
   end
 
   private
