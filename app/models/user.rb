@@ -14,4 +14,10 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
     end
   end
+
+  def add_movie(movie)
+    if !self.movies.include?(movie)
+      self.movies << movie
+    end
+  end
 end

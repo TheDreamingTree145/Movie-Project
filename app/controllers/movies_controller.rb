@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   before_action :logged_in_check
-  before_action :find_movie, only: [:show, :edit, :update]
+  before_action :find_movie, only: [:show, :edit, :update, :add]
 
   def index
     @movies = Movie.all
@@ -36,6 +36,14 @@ class MoviesController < ApplicationController
       redirect_to @movie
     else
       render :new
+    end
+  end
+
+  def add
+    if current_user.add_movie(@movie)
+      redirect_to current_user
+    else
+      redirect_to @movie, alert: "You already have this movie in your collection!"
     end
   end
 
