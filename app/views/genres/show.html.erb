@@ -1,0 +1,6 @@
+<h1>Movies in <%= @genre.title %></h1>
+
+  <% @genre.movies.each do |movie| %>
+    <%= link_to movie.title, movie %><br>
+    Critic Rating: <%= movie.critic_rating %><br><br>
+  <% end %>

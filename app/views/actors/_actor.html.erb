@@ -1,5 +1,6 @@
 <h3>Total awards for movies appearing in: <%= actor.actor_award_count %></h3>
 
+<h3>Movies Appearing In</h3>
 <ul>
   <% actor.movies.each do |movie| %>
     <li><%= link_to movie.title, movie %></li>
