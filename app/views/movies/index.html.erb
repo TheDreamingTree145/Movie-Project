@@ -1,5 +1,8 @@
 <h1>List of all Movies!</h1>
 
-<% @movies.each do |movie| %>
-  <h4><%= link_to movie.title, movie %></h4>
-<% end %>
+<td>
+  <% @movies.each do |movie| %>
+    <tr><h4><%= link_to movie.title, movie %></h4></tr>
+    <tr><p><%= link_to "Movie Actors", movie_actors_path(movie) %></p></tr>
+  <% end %>
+</td>

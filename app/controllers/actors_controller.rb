@@ -3,7 +3,11 @@ class ActorsController < ApplicationController
 
 
   def index
-    @actors = Actor.all
+    if find_movie
+      @actors = @movie.actors
+    else
+      @actors = Actor.all
+    end
   end
 
   def new
@@ -24,7 +28,7 @@ class ActorsController < ApplicationController
   end
 
   private
-  
+
   def actor_params
     params.require(:actor).permit(:name, :gender, :age)
   end

@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   resources :users
   resources :genres, only: [:index, :show]
 
-  resources :movies
+  resources :movies do
+    resources :actors, only: [:index, :show]
+  end
+
   resources :actors, only: [:index, :new, :create, :show]
   resources :characters, only: [:show]
 

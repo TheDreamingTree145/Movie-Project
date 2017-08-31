@@ -1,5 +1,9 @@
-<h1>Actors!</h1>
+<% if @movie %>
+  <h1><%= link_to @movie.title, @movie %> Actors!</h1>
+<% else %>
+  <h1>Actors!</h1>
+<% end %>
 
 <% @actors.each do |actor| %>
-  <%= link_to actor.name, actor %><br>
+  <%= link_to actor.name, actor %><br><br>
 <% end %>
