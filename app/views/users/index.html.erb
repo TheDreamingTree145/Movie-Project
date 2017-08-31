@@ -3,8 +3,6 @@
 <ul>
   <% @users.each do |user| %>
     <li><%= link_to user.email, user_path(user) %></li>
-      <ul>
-        <li><%= user.movies.count %></li>
-      </ul>
+        Number of Movies in Collection: <%= user.movies.count %><br><br>
   <% end %>
 </ul>
