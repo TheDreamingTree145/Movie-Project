@@ -7,6 +7,7 @@ class Movie < ApplicationRecord
   accepts_nested_attributes_for :characters
   validates_presence_of :title
   validates_uniqueness_of :title
+  scope :top_rated, -> { where("critic_rating: >= 80") }
 
   def characters_attributes=(characters_attributes)
     self.save
