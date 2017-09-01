@@ -9,9 +9,11 @@ class Movie < ApplicationRecord
   validates_uniqueness_of :title
   scope :top_rated, -> { where("critic_rating: >= 80") }
 
+
+  # Needs work on saving at proper time to make sure things aren't saved unless everything works
   def characters_attributes=(characters_attributes)
 
-    characters_attributes.each do |k, v|
+    characters_attributes.each do |k, v| #values will not work
       character = self.characters.build(name: v['name']) #create not saving
       binding.pry
       if v['actor_id'].empty?
