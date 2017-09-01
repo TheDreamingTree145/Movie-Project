@@ -14,50 +14,76 @@
 <br>
 
 <% # Not sure how to handle edit form filling in both fields %>
-<%= form_for movie do |f| %>
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %><br>
+
+<%= form_for movie, :html => {:class => "form-horizontal center"} do |f| %>
+  <div class="form-group">
+    <%= f.label :title, class: "col-md-1 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :title %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :release_date %>
-    <%= f.text_field :release_date %><br>
+  <div class="form-group">
+    <%= f.label :release_date, class: "col-md-1 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :release_date %>
+    </div>
   </div>
 
-  <div class="field">
-  <%= f.label :critic_rating %>
-  <%= f.number_field :critic_rating, {min: 0, max: 100} %><br>
+  <div class="form-group">
+    <%= f.label :critic_rating, class: "col-md-1 control-label" %>
+    <div class="col-md-8">
+      <%= f.number_field :critic_rating, {min: 0, max: 100} %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :awards %>
-    <%= f.number_field :awards, {min: 0, max: 50} %><br>
+  <div class="form-group">
+    <%= f.label :awards, class: "col-md-1 control-label" %>
+    <div class="col-md-8">
+      <%= f.number_field :awards, {min: 0, max: 50} %>
+    </div>
   </div>
 
   <%= f.hidden_field :created_by, :value => current_user.email %>
 
-  <div class="field">
-  Genre: <%= f.collection_select :genre_id, Genre.all, :id, :title %><br><br>
+  <div class="form-group">
+    <%= f.label :genre_id, class: "col-md-1 control-label" %>
+    <div class="col-md-8">
+      <%= f.collection_select :genre_id, Genre.all, :id, :title %><br><br>
+    </div>
   </div>
 
-  <div class="field">
+  <h3>Characters and Actors</h3>
+
   <%= f.fields_for :characters do |character| %>
-    Character <%= character.label :name %>
-    <%= character.text_field :name %><br>
+  <div class="form-group">
+    <%= character.label :name, "Character Name", class: "col-md-1 control-label" %>
+    <div class="col-md-8">
+      <%= character.text_field :name %>
+    </div>
   </div>
 
-  <div class="field">
-    Choose Existing Actor <%= character.collection_select :actor_id, Actor.all, :id, :name, :include_blank => "Select Actor" %><br>
+  <div class="form-group">
+    <%= character.label :actor_id, class: "col-md-1 control-label" %>
+    <div class="col-md-8">
+      <%= character.collection_select :actor_id, Actor.all, :id, :name, :include_blank => "Select Actor" %>
+    </div>
   </div>
 
-    <div class="field">
     <%= character.fields_for :actor do |act| %>
-      Create New Actor <%= act.text_field :name, :value => '' %><br>
-      <%= act.label :gender, "Male" %>
-      <%= act.radio_button :gender, "Male" %>
-      <%= act.label :gender, "Female" %>
-      <%= act.radio_button :gender, "Female" %><br>
+    <div class="form-group">
+      <%= act.label :name, "or Create New Actor", class: "col-md-1 control-label" %>
+      <div class="col-md-8">
+        <%= act.text_field :name, :value => '' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= act.label :gender, "Male", class: "col-md-1 control-label" %>
+      <div class="col-md-8">
+        <%= act.radio_button :gender, "Male" %>
+        <%= act.radio_button :gender, "Female" %>
+      </div>
     </div>
 
     <div class="field">
