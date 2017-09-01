@@ -10,33 +10,18 @@ class Movie < ApplicationRecord
   scope :top_rated, -> { where("critic_rating: >= 80") }
 
   def characters_attributes=(characters_attributes)
-    self.save
-    character_1 = Character.find_or_initialize_by(name: characters_attributes.values[0]['name'], movie_id: self.id)
-    character_2 = Character.find_or_initialize_by(name: characters_attributes.values[1]['name'], movie_id: self.id)
-    character_3 = Character.find_or_initialize_by(name: characters_attributes.values[2]['name'], movie_id: self.id)
-    if characters_attributes.values[0]['actor_id'].empty?
-      @actor = Actor.create(name: characters_attributes.values[0]['actor_attributes']['name'], gender: characters_attributes.values[0]['actor_attributes']['gender'], age: characters_attributes.values[0]['actor_attributes']['age'])
-      character_1.actor = @actor
-      character_1.save
-    else
-      character_1.actor = Actor.find_by(id: characters_attributes.values[0]['actor_id'])
-      character_1.save
-    end
-    if characters_attributes.values[1]['actor_id'].empty?
-      @actor = Actor.create(name: characters_attributes.values[1]['actor_attributes']['name'], gender: characters_attributes.values[1]['actor_attributes']['gender'], age: characters_attributes.values[1]['actor_attributes']['age'])
-      character_2.actor = @actor
-      character_2.save
-    else
-      character_2.actor = Actor.find_by(id: characters_attributes.values[1]['actor_id'])
-      character_2.save
-    end
-    if characters_attributes.values[2]['actor_id'].empty?
-      @actor = Actor.create(name: characters_attributes.values[2]['actor_attributes']['name'], gender: characters_attributes.values[2]['actor_attributes']['gender'], age: characters_attributes.values[2]['actor_attributes']['age'])
-      character_3.actor = @actor
-      character_3.save
-    else
-      character_3.actor = Actor.find_by(id: characters_attributes.values[2]['actor_id'])
-      character_3.save
+
+    characters_attributes.each do |k, v|
+      character = self.characters.build(name: v['name']) #create not saving
+      binding.pry
+      if v['actor_id'].empty?
+        @actor = Actor.create(v['actor_attributes'])
+        character.actor = @actor
+        binding.pry
+      else
+        character.actor = Actor.find_by(id: v['actor_id'])
+      end
     end
   end
+
 end
