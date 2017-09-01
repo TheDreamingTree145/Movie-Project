@@ -3,11 +3,4 @@ class Character < ApplicationRecord
   belongs_to :movie
   validates_presence_of :name
   accepts_nested_attributes_for :actor
-
-  def actor_attributes=(actor_attributes)
-    binding.pry
-    actor_attributes.values do |value|
-      @character.actor.create(name: value)
-    end
-  end
 end

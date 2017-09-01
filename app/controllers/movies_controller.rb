@@ -15,11 +15,11 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = current_user.movies.create(movie_params)
+    @movie = current_user.movies.new(movie_params)
     if @movie.save
       redirect_to @movie
     else
-      render :new
+      render :new # problem
     end
   end
 
@@ -56,7 +56,7 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :release_date, :critic_rating, :awards, :genre_id, :created_by, characters_attributes:[:name, :actor_id, actor_attributes:[:name, :gender, :age]])
+    params.require(:movie).permit(:title, :release_date, :critic_rating, :awards, :genre_id, :created_by, characters_attributes:[:name, :actor_id,  actor_attributes:[:name, :gender, :age]])
   end
 
 end
