@@ -24,7 +24,6 @@ class ActorsController < ApplicationController
   end
 
   def show
-    binding.pry
     @actor = Actor.find(params[:id])
   end
 
