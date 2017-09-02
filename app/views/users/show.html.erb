@@ -15,7 +15,7 @@ Genres in <%= @user.email %> movies: <%= unique_genres %>
     <h3>Title: <%= link_to movie.title, movie %></h3>
     <strong>Starring:</strong>
     <% movie.characters.each do |character| %>
-      <li>Character: <%= character.name %>, Played By: <%= link_to character.actor.name, character.actor %></li>
+      <li>Character: <%= link_to character.name, movie_character_path(character) %>, Played By: <%= link_to character.actor.name, character.actor %></li>
      <% end %>
      <br>
      <%= button_to "Remove From My Movies", {:controller => 'movies', :action => 'remove', :movie_id => movie.id} %>

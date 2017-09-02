@@ -16,8 +16,8 @@
 <h3>Characters: </h3>
 <% @movie.characters.each do |character| %>
   <label for="character[name]">Character: </label>
-    <%= character.name %><br>
+    <%= link_to character.name, movie_character_path(@movie, character) %><br>
   <label for="character[actor][name]">Played By: </label>
-  <%= link_to character.actor.name, character.actor %><br><br>
+  <%= link_to character.actor.name, movie_actor_path(@movie, character.actor) %><br><br>
 <% end %>
 </div>
