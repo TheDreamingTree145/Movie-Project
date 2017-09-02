@@ -18,28 +18,28 @@
 <%= form_for movie, :html => {:class => "form-horizontal center"} do |f| %>
   <div class="form-group">
     <%= f.label :title, class: "col-md-1 control-label" %>
-    <div class="col-md-8">
+    <div class="col-md-4">
       <%= f.text_field :title %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :release_date, class: "col-md-1 control-label" %>
-    <div class="col-md-8">
+    <div class="col-md-4">
       <%= f.text_field :release_date %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :critic_rating, class: "col-md-1 control-label" %>
-    <div class="col-md-8">
+    <div class="col-md-4">
       <%= f.number_field :critic_rating, {min: 0, max: 100} %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :awards, class: "col-md-1 control-label" %>
-    <div class="col-md-8">
+    <div class="col-md-4">
       <%= f.number_field :awards, {min: 0, max: 50} %>
     </div>
   </div>
@@ -48,7 +48,7 @@
 
   <div class="form-group">
     <%= f.label :genre_id, class: "col-md-1 control-label" %>
-    <div class="col-md-8">
+    <div class="col-md-4">
       <%= f.collection_select :genre_id, Genre.all, :id, :title %><br><br>
     </div>
   </div>
@@ -58,14 +58,14 @@
   <%= f.fields_for :characters do |character| %>
   <div class="form-group">
     <%= character.label :name, "Character Name", class: "col-md-1 control-label" %>
-    <div class="col-md-8">
+    <div class="col-md-4">
       <%= character.text_field :name %>
     </div>
   </div>
 
   <div class="form-group">
     <%= character.label :actor_id, class: "col-md-1 control-label" %>
-    <div class="col-md-8">
+    <div class="col-md-4">
       <%= character.collection_select :actor_id, Actor.all, :id, :name, :include_blank => "Select Actor" %>
     </div>
   </div>
@@ -73,22 +73,23 @@
     <%= character.fields_for :actor do |act| %>
     <div class="form-group">
       <%= act.label :name, "or Create New Actor", class: "col-md-1 control-label" %>
-      <div class="col-md-8">
+      <div class="col-md-4">
         <%= act.text_field :name, :value => '' %>
       </div>
     </div>
 
-    <div class="form-group">
-      <%= act.label :gender, "Male", class: "col-md-1 control-label" %>
-      <div class="col-md-8">
-        <%= act.radio_button :gender, "Male" %>
-        <%= act.radio_button :gender, "Female" %>
-      </div>
+    <div class="btn-group" data-toggle="buttons-radio">
+      <%= act.label :gender, "Male" %>
+      <%= act.radio_button :gender, "Male" %>
+      <%= act.label :gender, "Female"%>
+      <%= act.radio_button :gender, "Female" %>
     </div>
 
-    <div class="field">
-      <%= act.label :age %>
-      <%= act.number_field :age, {min: 1, max: 100} %><br><br>
+    <div class="form-group">
+      <%= act.label :age, class: "col-md-1 control-label" %>
+      <div class="col-md-4">
+        <%= act.number_field :age, {min: 1, max: 100} %><br><br>
+      </div>
     </div>
     <% end %>
   <% end %>
