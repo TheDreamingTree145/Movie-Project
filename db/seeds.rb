@@ -13,27 +13,23 @@ Genres.each do |genre_name|
 end
 
 10.times do
-  @user = User.create(email: Faker::Internet.email, password: Faker::Internet.password)
-  @user.movies.create(title: Faker::Book.title, release_date: rand(1920..2018), critic_rating: rand(0..100), awards: rand(0..20), genre_id: Genre.all.ids.sample, created_by: self.email)
+  @user = User.new(email: Faker::Internet.email, password: Faker::Internet.password)
+  @user.movies.build(title: Faker::Book.title, release_date: rand(1920..2018), critic_rating: rand(0..100), awards: rand(0..20), genre_id: Genre.all.ids.sample, created_by: @user.email)
+  @user.save
 end
 
 gender_choice = ["Male", "Female"]
 
-Movie.all.each do |movie|
-  character = movie.characters.build(name: Faker::Name.first_name, movie_id: self.id, quote: Faker::Movie.quote)
-  character_2 = movie.characters.build(name: Faker::Name.first_name, movie_id: self.id, quote: Faker::Movie.quote)
-  character_3 = movie.characters.build(name: Faker::Name.first_name, movie_id: self.id, quote: Faker::Movie.quote)
-  character.actor.build(name: Faker::Name.name, gender: gender_choice.sample, age: rand(1..100))
-  character_2.build(name: Faker::Name.name, gender: gender_choice.sample, age: rand(1..100))
-  character_3.build(name: Faker::Name.name, gender: gender_choice.sample, age: rand(1..100))
-
-10.times do
-  Actor.create(name: Faker::Name.name, gender: gender_choice.sample, age: rand(1..100))
+30.times do
+  actor = Actor.new(name: Faker::Name.name, gender: gender_choice.sample, age: rand(1..100))
+  actor.save
 end
 
-3.times do
-  @character = Character.create(name: Faker::Name.first_name, actor_id: Actor.all.sample.id, movie_id: @movie.id )
-  @character_2 = Character.create(name: Faker::Name.first_name, actor_id: Actor.all.sample.id, movie_id: @movie_2.id)
-  @character.save
-  @character_2.save
+Movie.all.each do |movie|
+  character = movie.characters.build(name: Faker::Name.first_name, movie_id: movie.id, actor_id: Actor.all.ids.sample, quote: Faker::Movie.quote)
+  character_2 = movie.characters.build(name: Faker::Name.first_name, movie_id: movie.id, actor_id: Actor.all.ids.sample, quote: Faker::Movie.quote)
+  character_3 = movie.characters.build(name: Faker::Name.first_name, movie_id: movie.id, actor_id: Actor.all.ids.sample, quote: Faker::Movie.quote)
+  character.save
+  character_2.save
+  character_3.save
 end
