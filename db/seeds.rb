@@ -14,21 +14,18 @@ end
 
 10.times do
   @user = User.create(email: Faker::Internet.email, password: Faker::Internet.password)
+  @user.movies.create(title: Faker::Book.title, release_date: rand(1920..2018), critic_rating: rand(0..100), awards: rand(0..20), genre_id: Genre.all.ids.sample, created_by: self.email)
 end
-
-@user = User.first
-@user_2 = User.last
-
-5.times do
-  @user.movies.create(title: Faker::Book.title, release_date: rand(1920..2018), critic_rating: rand(0..100), awards: rand(0..20), genre_id: Genre.all.ids.sample, created_by: @user.email)
-  @user_2.movies.create(title: Faker::Book.title, release_date: rand(1920..2018), critic_rating: rand(0..100), awards: rand(0..20), genre_id: Genre.all.ids.sample, created_by: @user.email)
-end
-
-@movie = Movie.first
-@movie_2 = Movie.last
-
 
 gender_choice = ["Male", "Female"]
+
+Movie.all.each do |movie|
+  character = movie.characters.build(name: Faker::Name.first_name, movie_id: self.id, quote: Faker::Movie.quote)
+  character_2 = movie.characters.build(name: Faker::Name.first_name, movie_id: self.id, quote: Faker::Movie.quote)
+  character_3 = movie.characters.build(name: Faker::Name.first_name, movie_id: self.id, quote: Faker::Movie.quote)
+  character.actor.build(name: Faker::Name.name, gender: gender_choice.sample, age: rand(1..100))
+  character_2.build(name: Faker::Name.name, gender: gender_choice.sample, age: rand(1..100))
+  character_3.build(name: Faker::Name.name, gender: gender_choice.sample, age: rand(1..100))
 
 10.times do
   Actor.create(name: Faker::Name.name, gender: gender_choice.sample, age: rand(1..100))
