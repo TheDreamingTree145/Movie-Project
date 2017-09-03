@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :movies do
     resources :actors, only: [:index, :show]
-    resources :characters, only: [:show]
+    resources :characters, only: [:new, :show]
   end
 
   resources :actors, only: [:index, :new, :create, :show]

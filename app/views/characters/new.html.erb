@@ -1,0 +1,6 @@
+<h1>Create a New Character</h1>
+
+<%= form_for @character do |f| %>
+  <%= f.hidden_field :movie_id, :value => @movie.id %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
