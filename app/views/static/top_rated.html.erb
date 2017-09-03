@@ -1,0 +1,8 @@
+<h1>Movie Rated Above 80!</h1>
+
+<ul>
+  <% @movies.each do |movie| %>
+    <li><%= link_to movie.title, movie %></li>
+    Critic Rating: <%= movie.critic_rating %><br><br>
+  <% end %>
+</ul>

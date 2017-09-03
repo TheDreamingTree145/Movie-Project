@@ -9,11 +9,6 @@ class Movie < ApplicationRecord
 
   scope :top_rated, -> {where("critic_rating >= 80")}
 
-  def self.top_rated
-    where("critic_rating >= 80")
-  end
-
-  # Needs work on saving at proper time to make sure things aren't saved unless everything works
   def characters_attributes=(characters_attributes)
     characters_attributes.each do |k, v| #values will not work
       character = self.characters.find_or_initialize_by(name: v['name'], movie_id: self.id)
