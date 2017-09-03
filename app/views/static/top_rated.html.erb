@@ -3,6 +3,7 @@
 <ul>
   <% @movies.each do |movie| %>
     <li><%= link_to movie.title, movie %></li>
+    Genre: <%= link_to movie.genre.title, movie.genre %><br>
     Critic Rating: <%= movie.critic_rating %><br><br>
   <% end %>
 </ul>
