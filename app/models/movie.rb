@@ -16,10 +16,14 @@ class Movie < ApplicationRecord
   # Needs work on saving at proper time to make sure things aren't saved unless everything works
   def characters_attributes=(characters_attributes)
     characters_attributes.each do |k, v| #values will not work
-      character = self.characters.build(name: v['name']) #create not saving
+      character = self.characters.find_or_initialize_by(name: v['name'], movie_id: self.id)
       if v['actor_id'].empty?
-        @actor = Actor.new(v['actor_attributes'])
-        character.actor = @actor
+        actor = Actor.new(v['actor_attributes'])
+        binding.pry
+        if actor.save
+          character.actor = actor
+          character.save
+        end
       else
         character.actor = Actor.find_by(id: v['actor_id'])
       end

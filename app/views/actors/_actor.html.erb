@@ -3,7 +3,7 @@
 <h3>Movies Appearing In</h3>
 <ul>
   <% actor.movies.each do |movie| %>
-    <li><%= link_to movie.title, movie %></li>
-    <li><%= link_to movie.genre.title, movie.genre %></li><br>
+    Title: <%= link_to movie.title, movie %><br>
+    Genre: <%= link_to movie.genre.title, movie.genre %><br><br>
   <% end %>
 </ul>
