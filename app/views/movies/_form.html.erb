@@ -64,6 +64,13 @@
   </div>
 
   <div class="form-group">
+    <%= character.label :quote, class: "col-md-1 control-label" %>
+    <div class="col-md-4">
+      <%= character.text_area :quote %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= character.label :actor_id, class: "col-md-1 control-label" %>
     <div class="col-md-4">
       <%= character.collection_select :actor_id, Actor.all, :id, :name, :include_blank => "Select Actor" %>

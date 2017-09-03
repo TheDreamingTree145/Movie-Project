@@ -1,0 +1,7 @@
+<h1><%= @character.name %></h1>
+
+  <h3><%= link_to @character.movie.title, @character.movie %></h3>
+
+  Played by: <%= link_to @character.actor.name, @character.actor %><br>
+
+  Quote from Movie: <%= @character.quote %>
