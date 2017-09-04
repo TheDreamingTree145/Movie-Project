@@ -15,8 +15,9 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = current_user.movies.new(movie_params)
+    @movie = current_user.movies.build(movie_params) # Why the hell won't this associate the movie with user on save
     if @movie.save
+      current_user.movies << @movie
       redirect_to @movie
     else
       render :new # problem

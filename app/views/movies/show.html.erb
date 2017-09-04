@@ -1,6 +1,7 @@
 <h1><%= @movie.title %></h1>
 <% if current_user.email == @movie.created_by %>
   <p><%= link_to "Edit Movie", edit_movie_path %></p>
+  <p><%= link_to "Add Character to Movie", new_movie_character_path(@movie) %></p>
 <% end %>
 <%= button_to "Add to My Movies", :action => 'add' %>
 <h2><%= link_to @movie.genre.title, @movie.genre %></h2>
