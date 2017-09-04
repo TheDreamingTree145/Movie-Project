@@ -5,7 +5,7 @@ class Character < ApplicationRecord
 
   def actor_attributes=(actor_attributes)
     if self.actor_id.nil?
-      Actor.new(actor_attributes)
+      self.actor = Actor.new(actor_attributes)
     end
   end
 end
