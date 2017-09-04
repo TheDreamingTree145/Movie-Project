@@ -7,7 +7,7 @@ class Actor < ApplicationRecord
   def actor_award_count
     total = 0
     self.movies.each do |movie|
-      total = total + movie.awards
+      total = total + movie.awards unless movie.awards.nil?
     end
     total
   end

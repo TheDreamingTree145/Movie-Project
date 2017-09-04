@@ -4,7 +4,7 @@ class Movie < ApplicationRecord
   has_many :characters
   has_many :actors, :through => :characters
   belongs_to :genre
-  validates_presence_of :title
+  validates_presence_of :title, :critic_rating, :awards
   validates_uniqueness_of :title
 
   scope :top_rated, -> {where("critic_rating >= 80")}
