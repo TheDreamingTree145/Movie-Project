@@ -19,11 +19,11 @@ Specs:
  [x] Include logout (how e.g. Devise) - Devise
  [x] Include third party signup/login (how e.g. Devise/OmniAuth) - Devise and OmniAuth
  [x] Include nested resource show or index (URL e.g. users/2/recipes) - /movies/:id/actors/:id + /movies/:id/actors + /movies/:id/characters/:id
- [x]Include nested resource "new" form (URL e.g. recipes/1/ingredients)
- [x] Include form display of validation errors (form URL e.g. /recipes/new)
+ [x]Include nested resource "new" form (URL e.g. recipes/1/ingredients) - /movies/:id/characters/new
+ [x] Include form display of validation errors (form URL e.g. /recipes/new) - errors on forms show on render.. excepts characters/new
 Confirm:
 
- The application is pretty DRY
- Limited logic in controllers
- Views use helper methods if appropriate
- Views use partials if appropriate
+ [x] The application is pretty DRY
+ [x] Limited logic in controllers
+ [x] Views use helper methods if appropriate
+ [x] Views use partials if appropriate

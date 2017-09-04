@@ -1,4 +1,4 @@
-<% if current_user == @user %>
+<% if user_check? %>
   <h1>Welcome, <%= current_user.email %></h1>
   You have currently added <%= current_user.movies.count %> movies!<br>
 <% else %>
@@ -18,6 +18,8 @@ Genres in <%= @user.email %> movies: <%= unique_genres %>
       <li>Character: <%= link_to character.name, movie_character_path(movie, character) %>, Played By: <%= link_to character.actor.name, movie_actor_path(movie, character.actor) %></li>
      <% end %>
      <br>
-     <%= button_to "Remove From My Movies", {:controller => 'movies', :action => 'remove', :movie_id => movie.id} %>
+    <% if user_check? %>
+      <%= button_to "Remove From My Movies", {:controller => 'movies', :action => 'remove', :movie_id => movie.id} %>
+    <% end %>
   <% end %>
 </ul>

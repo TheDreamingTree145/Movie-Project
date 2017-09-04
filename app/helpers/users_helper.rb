@@ -12,4 +12,8 @@ module UsersHelper
     actor_count.count
   end
 
+  def user_check?
+    true if current_user == @user
+  end
+  
 end

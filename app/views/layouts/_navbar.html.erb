@@ -3,6 +3,7 @@
     <div class="container">
         <% if user_signed_in? %>
           <%= link_to "My Page", current_user %> &emsp;
+          <%= link_to "User Index", users_path %> &emsp;
           <%= link_to "Movies", movies_path %> &emsp;
           <%= link_to "Actors", actors_path %> &emsp;
           <%= link_to "Genres", genres_path %> &emsp;
