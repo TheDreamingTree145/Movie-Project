@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is a movie tracking app. Users are able to sign in, sign in with Facebook, and create new accounts. Once signed in users can add movies others have created as well as creating new movies, actors, and characters.
 
-Things you may want to cover:
+Please run bundle install.
 
-* Ruby version
+Application was created using Ruby 2.3.3 and Rails 5.1.3
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Database was created using Sqlite3.
