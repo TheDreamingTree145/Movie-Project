@@ -3,6 +3,6 @@
 <td>
   <% @movies.each do |movie| %>
     <tr><h4><%= link_to movie.title, movie %></h4></tr>
-    <tr><p><%= link_to "Movie Actors", movie_actors_path(movie) %></p></tr>
+    <tr><p><%= link_to "Movie Actors", movie_actors_path(movie) %></p></tr><br>
   <% end %>
 </td>
