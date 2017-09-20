@@ -9,6 +9,7 @@ class Movie < ApplicationRecord
 
   scope :top_rated, -> {where("critic_rating >= 80")}
 
+
   def characters_attributes=(characters_attributes) # Now I'm not sure about this method because database of characters would get huge if they get edit
     characters_attributes.each do |k, v| #values will not work
       character = self.characters.find_or_initialize_by(name: v['name'], movie_id: self.id)

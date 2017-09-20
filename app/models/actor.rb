@@ -11,4 +11,16 @@ class Actor < ApplicationRecord
     end
     total
   end
+
+  def highest_rated_movie
+    self.movies.order("critic_rating DESC").first
+  end
+
+  def self.top_actor_awards
+    self.all.select do |actor|
+      if actor.actor_award_count > 24
+        actor
+      end
+    end
+  end
 end

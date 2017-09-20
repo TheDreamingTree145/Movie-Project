@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root to: 'welcome#home'
   post '/movies/:id/add', to: 'movies#add'
   post '/movies/:id/remove', to: 'movies#remove'
-  get '/top_rated', to: 'static#top_rated', as: 'top_rated'
+  get '/top_rated_movies', to: 'static#top_rated_movies', as: 'top_rated_movies'
+  get '/top_rated_actors', to: 'static#top_rated_actors', as: 'top_rated_actors'
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks"}
   resources :users
   resources :genres, only: [:index, :show]

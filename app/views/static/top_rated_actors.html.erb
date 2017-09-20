@@ -1,0 +1,8 @@
+<h1> Actors with 25 or More Movie Awards!</h1>
+
+<% @actors.each do |actor| %>
+  <%= link_to actor.name, actor %><br>
+  Number of Awards: <%= actor.actor_award_count %><br>
+  Highest Rated Movie: <%= link_to actor.highest_rated_movie.title, actor.highest_rated_movie %><br><br>
+
+<% end %>
