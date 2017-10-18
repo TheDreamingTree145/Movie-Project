@@ -3,6 +3,7 @@
 <td>
   <% @movies.each do |movie| %>
     <tr><h4><%= link_to movie.title, movie %></h4></tr>
-    <tr><p id=`movie-actors-${movie.id}`></p></tr><br>
+    <tr><button class="movie-button" id="show-characters-<%=movie.id%>" onclick="loadCharactors(<%= movie.id %>);">Show Characters</button><tr>
+    <tr><p id="movie-characters-<%= movie.id %>"></p></tr><br>
   <% end %>
 </td>

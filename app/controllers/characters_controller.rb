@@ -1,6 +1,11 @@
 class CharactersController < ApplicationController
   before_action :logged_in_check
 
+  def index
+    @characters = Character.all
+    render json: @characters
+  end
+
   def new
     @movie = Movie.find_by(id: params[:movie_id])
     @character = Character.new

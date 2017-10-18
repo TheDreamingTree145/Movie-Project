@@ -1,11 +1,11 @@
-$('document').ready(function() {
-  attachListeners();
-})
-
 function loadActors(movie_id) {
-  $("#movie-id-" + movie_id).on('click', function() {
-    $.ajax({
-
+    debugger;
+      $.ajax({
+        type: 'GET',
+        url: `/movies/${movie_id}/characters`,
+        dataType: 'json',
+        success: function(characters) {
+          debugger;
+        }
       })
-    })
 }
