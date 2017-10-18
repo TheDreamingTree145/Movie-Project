@@ -1,9 +1,8 @@
 <h1>List of all Movies!</h1>
 
-<td>
+
   <% @movies.each do |movie| %>
-    <tr><h4><%= link_to movie.title, movie %></h4></tr>
-    <tr><button class="movie-button" id="show-characters-<%=movie.id%>" onclick="loadCharactors(<%= movie.id %>);">Show Characters</button><tr>
-    <tr><p id="movie-characters-<%= movie.id %>"></p></tr><br>
+    <h4><%= link_to movie.title, movie %></h4>
+    <button class="movie-button" id="show-characters-<%=movie.id%>" onclick="loadCharacters(<%= movie.id %>);">Show Characters</button>
+    <div id="movie-characters-<%= movie.id %>"></div><br>
   <% end %>
-</td>
