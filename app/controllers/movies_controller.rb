@@ -58,6 +58,10 @@ class MoviesController < ApplicationController
     redirect_to current_user, alert: "Successfully removed movie!"
   end
 
+  def random
+
+  end
+
   private
 
   def movie_params
