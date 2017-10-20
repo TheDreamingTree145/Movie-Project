@@ -29,12 +29,16 @@ function loadCharacters(movie_id) {
   })
 }
 
+// does flip through because I am using sample?
 function randomMovie() {
   $('#random-movie-button').on('click', function() {
     let newMovie = Math.floor(Math.random() * (movies() + 1))
-    debugger;
     $.get(`/movies/${newMovie}.json`, function(data) {
-      debugger;
+      $('.movieTitle').text(data['title']);
+      $('.releaseDate').text(data['release_date']); // How to do with null values in these fields
+      $('criticRating').text(data['critic_rating']);
+      $('.awards').text(data['awards']);
+      $('.createdBy').text(data['created_by']);
     })
   })
 }
