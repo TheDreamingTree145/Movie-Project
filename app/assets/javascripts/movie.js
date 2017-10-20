@@ -13,7 +13,7 @@ $('document').ready(function() {
 function loadCharacters(movie_id) {
   $.ajax({
     type: 'GET',
-    url: `/movies/${movie_id}/`,
+    url: `/movies/${movie_id}/characters`,
     dataType: 'json',
     success: function(characters) {
       $('#movie-characters-' + characters[0].movie.id).toggle(function() {
