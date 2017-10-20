@@ -33,7 +33,6 @@ class MoviesController < ApplicationController
       format.html
       format.json { render :json => @movie }
     end
-
   end
 
   def edit
