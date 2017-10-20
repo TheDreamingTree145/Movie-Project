@@ -7,7 +7,7 @@ $('document').ready(function() {
 function loadCharacters(movie_id) {
   $.ajax({
     type: 'GET',
-    url: `/movies/${movie_id}/characters`,
+    url: `/movies/${movie_id}/`,
     dataType: 'json',
     success: function(characters) {
       $('#movie-characters-' + characters[0].movie.id).toggle(function() {
@@ -24,15 +24,11 @@ function loadCharacters(movie_id) {
 }
 
 function randomMovie() {
-  $.ajax({
-    type: 'GET',
-    url: '/movies',
-    dataType: 'json',
-    success: function(movies) {
-      $('#random-movie').empty();
-      let randomId = Math.floor(Math.random() * (movies.length + 1))
-      let movie = movies[randomId];
-      $('#random-movie').append(`<h2><a href='/movies/${movie.id}'>${movie.title}</h2>`)
-    }
+  $('#random-movie-button').on('click', function() {
+    debugger;
+    let newMovie = Math.floor(Math.random() * (movies.length + 1))
+    $.get(`/movies/${newMovie}/.json`, function(data) {
+      debugger;
+    })
   })
 }
