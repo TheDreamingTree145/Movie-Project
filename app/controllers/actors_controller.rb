@@ -17,7 +17,7 @@ class ActorsController < ApplicationController
   def create
     @actor = Actor.create(actor_params)
     if @actor.save
-      redirect_to @actor
+      render json: @actor, status: 201
     else
       render :new
     end

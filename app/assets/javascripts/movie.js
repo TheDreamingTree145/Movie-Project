@@ -11,7 +11,6 @@ $('document').ready(function() {
  $('.movie-button').on('click', function() {
    loadCharacters(parseInt($(this).attr('data-movie-id')))
  })
- $('#movie-characters-' + $(this).attr('data-movie-id')).toggle()
 })
 
 function loadCharacters(movie_id) {
@@ -20,7 +19,7 @@ function loadCharacters(movie_id) {
     url: `/movies/${movie_id}/characters.json`,
     dataType: 'json',
     success: function(characters) {
-      $('#movie-characters-' + characters[0].movie.id).empty()
+      $('#movie-characters-' + characters[0].movie.id).toggle(function() {})
       characters.forEach(function(character) {
           $('#movie-characters-' + character.movie.id).append(`<li>${character.name} Played By: <a href="/actors/${character.actor.id}">${character.actor.name}</li>`)
       })

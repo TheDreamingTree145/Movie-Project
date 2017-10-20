@@ -1,3 +1,28 @@
 <h1>Create New Actor!</h1>
 
 <%= render partial: 'form', locals: {actor: @actor} %>
+
+<div id="actorResult">
+  <p id="actorName"></p>
+  <p id="actorGender"></p>
+  <p id="actorAge"></p>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('#new_actor').submit(function(event) {
+      event.preventDefault();
+      debugger;
+      let values = $(this).serialize();
+
+      let posting = $.post('/actors', values);
+
+      posting.done(function(data) {
+        let actor = data;
+        $("#actorName").text(actor["name"]);
+        $("#actorGender").text(actor["gender"]);
+        $("#actorAge").text(actor["age"])
+      })
+    })
+  })
+</script>
