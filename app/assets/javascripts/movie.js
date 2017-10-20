@@ -1,3 +1,9 @@
+// It's like I have to click everything twice to work... Because document.ready?
+
+let movies = function() { // Gotta be a better way to do this. I imagine this slows stuff way down
+  return $('.movies_class').data('movies').length
+}
+
 $('document').ready(function() {
   $('#random-movie-button').on('click', function() {
     randomMovie();
@@ -25,9 +31,9 @@ function loadCharacters(movie_id) {
 
 function randomMovie() {
   $('#random-movie-button').on('click', function() {
+    let newMovie = Math.floor(Math.random() * (movies() + 1))
     debugger;
-    let newMovie = Math.floor(Math.random() * (movies.length + 1))
-    $.get(`/movies/${newMovie}/.json`, function(data) {
+    $.get(`/movies/${newMovie}.json`, function(data) {
       debugger;
     })
   })

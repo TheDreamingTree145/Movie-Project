@@ -29,6 +29,10 @@ class MoviesController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render :json => @movie }
+    end
 
   end
 
@@ -59,6 +63,7 @@ class MoviesController < ApplicationController
   end
 
   def random
+    @movies = Movie.all
     @movie = Movie.all.sample
   end
 

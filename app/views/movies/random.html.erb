@@ -2,3 +2,6 @@
 <%= render partial: 'movie_details', locals: {movie: @movie} %>
 
 <button id="random-movie-button">Click for a New Movie</button>
+
+<%= content_tag :div, class: "movies_class", data: {movies: @movies} do  %>
+<% end %>
