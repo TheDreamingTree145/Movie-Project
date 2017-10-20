@@ -16,6 +16,9 @@ function loadCharacters(movie_id) {
             $('#movie-characters-' + character.movie.id).append(`<li>${character.name} Played By: <a href="/actors/${character.actor.id}">${character.actor.name}</li>`)
         })
       })
+    },
+    error: function(request, status, error) {
+      alert("There has been an error loading the characters");
     }
   })
 }
@@ -29,7 +32,7 @@ function randomMovie() {
       $('#random-movie').empty();
       let randomId = Math.floor(Math.random() * (movies.length + 1))
       let movie = movies[randomId];
-      $('#random-movie').append(`<h2><a href='/movies/${movie.id}'${movie.title}</h2>`)
+      $('#random-movie').append(`<h2><a href='/movies/${movie.id}'>${movie.title}</h2>`)
     }
   })
 }

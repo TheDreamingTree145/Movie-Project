@@ -6,12 +6,7 @@
 <%= button_to "Add to My Movies", :action => 'add' %>
 <h2><%= link_to @movie.genre.title, @movie.genre %></h2>
 
-<div class="movie_info">
-  <strong>Release Year:</strong> <%= @movie.release_date %><br>
-  <strong>Critic Rating/100:</strong> <%= @movie.critic_rating %><br>
-  <strong>Number of Awards:</strong> <%= @movie.awards %><br>
-  <strong>Added By:</strong> <%= @movie.created_by %>
-</div>
+<%= render partial: 'movie_details', locals: {movie: @movie} %>
 
 <div class="character_actors">
 <h3>Characters: </h3>

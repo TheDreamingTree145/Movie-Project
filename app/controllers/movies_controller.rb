@@ -59,7 +59,7 @@ class MoviesController < ApplicationController
   end
 
   def random
-
+    @movie = Movie.all.sample
   end
 
   private

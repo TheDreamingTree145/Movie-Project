@@ -16,4 +16,5 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
-//= requre movie
+//= require movie
+//= require actor
