@@ -8,26 +8,29 @@ $('document').ready(function() {
  $('#random-movie-button').on('click', function() {
    randomMovie();
  });
- $('.movie-button').on('click', function() {
-   loadCharacters(parseInt($(this).attr('data-movie-id')))
- })
 })
 
 function loadCharacters(movie_id) {
-  $.ajax({
-    type: 'GET',
-    url: `/movies/${movie_id}/characters.json`,
-    dataType: 'json',
-    success: function(characters) {
-      $('#movie-characters-' + characters[0].movie.id).toggle(function() {})
-      characters.forEach(function(character) {
+  let movieDiv = document.getElementById('movie-characters-' + movie_id)
+  if (movieDiv.hidden && movieDiv.children.length > 0) {
+    movieDiv.hidden = false
+  } else if (movieDiv.hidden === false && movieDiv.children.length > 0) {
+    movieDiv.hidden = true
+  } else {
+    $.ajax({
+      type: 'GET',
+      url: `/movies/${movie_id}/characters.json`,
+      dataType: 'json',
+      success: function(characters) {
+        characters.forEach(function(character) {
           $('#movie-characters-' + character.movie.id).append(`<li>${character.name} Played By: <a href="/actors/${character.actor.id}">${character.actor.name}</li>`)
-      })
-    },
-    error: function(request, status, error) {
-      alert("There has been an error loading the characters");
-    }
-  })
+        })
+      },
+      error: function(request, status, error) {
+        alert("There has been an error loading the characters");
+      }
+    })
+  }
 }
 
 // does flip through because I am using sample?
