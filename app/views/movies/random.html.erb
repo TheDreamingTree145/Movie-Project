@@ -1,7 +1,7 @@
 <h1 class="movieTitle"><%= @movie.title %></h1>
 <%= render partial: 'movie_details', locals: {movie: @movie} %>
 
-<button id="random-movie-button">Click for a New Movie</button>
+<button id="random-movie-button" onclick="randomMovie();">Click for a New Movie</button>
 
 <%= content_tag :div, class: "movies_class", data: {movies: @movies} do  %>
 <% end %>

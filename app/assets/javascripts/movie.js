@@ -4,12 +4,6 @@ let movies = function() { // Gotta be a better way to do this. I imagine this sl
   return $('.movies_class').data('movies').length
 }
 
-$('document').ready(function() {
- $('#random-movie-button').on('click', function() {
-   randomMovie();
- });
-})
-
 function loadCharacters(movie_id) {
   let movieDiv = document.getElementById('movie-characters-' + movie_id)
   if (movieDiv.hidden && movieDiv.children.length > 0) {
