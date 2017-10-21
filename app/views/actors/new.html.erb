@@ -3,16 +3,15 @@
 <%= render partial: 'form', locals: {actor: @actor} %>
 
 <div id="actorResult">
-  <p id="actorName"></p>
-  <p id="actorGender"></p>
-  <p id="actorAge"></p>
+  <strong>Actor Name: </strong><p id="actorName"></p>
+  <strong>Actor Gender: </strong><p id="actorGender"></p>
+  <strong>Actor Age: </strong><p id="actorAge"></p>
 </div>
 
 <script type="text/javascript" charset="utf-8">
   $(function () {
     $('#new_actor').submit(function(event) {
       event.preventDefault();
-      debugger;
       let values = $(this).serialize();
 
       let posting = $.post('/actors', values);
