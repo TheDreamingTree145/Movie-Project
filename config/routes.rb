@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root to: 'welcome#home'
-  get '/movies/random', to: 'movies#random', as: 'random'
+  get '/movies/random', to: 'movies#random', as: 'movies_random'
   post '/movies/:id/add', to: 'movies#add'
   post '/movies/:id/remove', to: 'movies#remove'
   get '/top_rated_movies', to: 'static#top_rated_movies', as: 'top_rated_movies'
