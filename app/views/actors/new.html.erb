@@ -7,21 +7,3 @@
   <strong>Actor Gender: </strong><p id="actorGender"></p>
   <strong>Actor Age: </strong><p id="actorAge"></p>
 </div>
-
-<script type="text/javascript" charset="utf-8">
-  $(function () {
-    $('#new_actor').submit(function(event) {
-      event.preventDefault();
-      let values = $(this).serialize();
-
-      let posting = $.post('/actors', values);
-
-      posting.done(function(data) {
-        let actor = data;
-        $("#actorName").text(actor["name"]);
-        $("#actorGender").text(actor["gender"]);
-        $("#actorAge").text(actor["age"])
-      })
-    })
-  })
-</script>

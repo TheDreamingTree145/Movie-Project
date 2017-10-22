@@ -1,6 +1,4 @@
-// It's like I have to click everything twice to work... Because document.ready?
-
-let movies = function() { // Gotta be a better way to do this. I imagine this slows stuff way down
+let movies = function() { 
   return $('.movies_class').data('movies').length
 }
 
