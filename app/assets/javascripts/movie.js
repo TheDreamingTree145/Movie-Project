@@ -7,6 +7,14 @@ class Movie {
     this.awards = awards;
     this.createdBy = createdBy;
   }
+  movieDetails() {
+    $('#random-title-link')[0].href = (`/movies/${this.id}`)
+    $('#random-title-link').text(this.title);
+    $('.releaseDate').text(this.releaseDate); // How to do with null values in these fields
+    $('criticRating').text(this.criticRating);
+    $('.awards').text(this.awards);
+    $('.createdBy').text(this.createdBy);
+  }
 }
 
 let moviesLength = function() {
@@ -40,11 +48,8 @@ function loadCharacters(movie_id) {
 function randomMovie() {
   let newMovie = Math.floor(Math.random() * (moviesLength() + 1))
   $.get(`/movies/${newMovie}.json`, function(data) {
-    $('#random-title-link')[0].href = (`/movies/${data.id}`)
-    $('#random-title-link').text(data['title']);
-    $('.releaseDate').text(data['release_date']); // How to do with null values in these fields
-    $('criticRating').text(data['critic_rating']);
-    $('.awards').text(data['awards']);
-    $('.createdBy').text(data['created_by']);
+    // not really sure of the point of this? Because I'm not creating object when instantiated in Rails or does that matter?
+    let movie = new Movie(data.id, data.title, data.release_date, data.critic_rating, data.awards, data.created_by)
+    movie.movieDetails();
   })
 }
