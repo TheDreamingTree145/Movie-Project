@@ -1,5 +1,11 @@
-<h1 class="movieTitle"><%= @movie.title %></h1>
-<%= render partial: 'movie_details', locals: {movie: @movie} %>
+<h1 class="movieTitle"><a id="random-title-link" href="/movies/<%= @movie.id %>"><%= @movie.title %></a></h1>
+<div class="movie_info">
+  <strong>Release Date: </strong><p class="releaseDate"><%= @movie.release_date %></p>
+  <strong>Critic Rating/100: </strong><p class="criticRating"><%= @movie.critic_rating %></p>
+  <strong>Number of Awards: </strong><p class="awards"><%= @movie.awards %></p>
+  <strong>Added By: </strong><p class="createdBy"><%= @movie.created_by %></p>
+</div>
+
 
 <button id="random-movie-button" onclick="randomMovie();">Click for a New Movie</button>
 

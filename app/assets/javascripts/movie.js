@@ -1,4 +1,4 @@
-let movies = function() { 
+let movies = function() {
   return $('.movies_class').data('movies').length
 }
 
@@ -29,7 +29,8 @@ function loadCharacters(movie_id) {
 function randomMovie() {
   let newMovie = Math.floor(Math.random() * (movies() + 1))
   $.get(`/movies/${newMovie}.json`, function(data) {
-    $('.movieTitle').text(data['title']);
+    $('#random-title-link')[0].href = (`/movies/${data.id}`)
+    $('#random-title-link').text(data['title']);
     $('.releaseDate').text(data['release_date']); // How to do with null values in these fields
     $('criticRating').text(data['critic_rating']);
     $('.awards').text(data['awards']);
