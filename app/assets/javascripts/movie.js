@@ -1,4 +1,15 @@
-let movies = function() {
+class Movie {
+  constructor(id, title, releaseDate, criticRating, awards, createdBy) {
+    this.id = id;
+    this.title = title;
+    this.releaseDate = releaseDate;
+    this.criticRating = criticRating;
+    this.awards = awards;
+    this.createdBy = createdBy;
+  }
+}
+
+let moviesLength = function() {
   return $('.movies_class').data('movies').length
 }
 
@@ -27,7 +38,7 @@ function loadCharacters(movie_id) {
 
 // does flip through because I am using sample?
 function randomMovie() {
-  let newMovie = Math.floor(Math.random() * (movies() + 1))
+  let newMovie = Math.floor(Math.random() * (moviesLength() + 1))
   $.get(`/movies/${newMovie}.json`, function(data) {
     $('#random-title-link')[0].href = (`/movies/${data.id}`)
     $('#random-title-link').text(data['title']);
