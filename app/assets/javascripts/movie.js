@@ -11,7 +11,7 @@ class Movie {
     $('#random-title-link')[0].href = (`/movies/${this.id}`)
     $('#random-title-link').text(this.title);
     $('.releaseDate').text(this.releaseDate); // How to do with null values in these fields
-    $('criticRating').text(this.criticRating);
+    $('.criticRating').text(this.criticRating);
     $('.awards').text(this.awards);
     $('.createdBy').text(this.createdBy);
   }
