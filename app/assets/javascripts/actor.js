@@ -15,17 +15,17 @@ class Actor {
 
 $(function () {
   $('#new_actor').submit(function(event) {
+    $('#actorSubmit').attr('data-disable-with');
+    debugger;
     event.preventDefault();
     let values = $(this).serialize();
 
     let posting = $.post('/actors', values);
     posting.done(function(data) {
-      let actorId = data.id;
-      let actorName = data.name;
-      let actorGender = data.gender;
-      let actorAge = data.age
-      let actor = new Actor(actorId, actorName, actorGender, actorAge);
-      actor.actorDetails();
+      $("#actorName").text(data.name);
+      $("#actorGender").text(data.gender);
+      $("#actorAge").text(data.age)
     })
+    $('#actorSubmit').removeAttr('data-disable-with');
   })
 })
