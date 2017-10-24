@@ -18,8 +18,6 @@ class ActorsController < ApplicationController
     @actor = Actor.create(actor_params)
     if @actor.save
       render json: @actor, status: 201
-    else
-      render :new
     end
   end
 

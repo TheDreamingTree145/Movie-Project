@@ -12,20 +12,3 @@ class Actor {
     $("#actorAge").text(this.age)
   }
 }
-
-$(function () {
-  $('#new_actor').submit(function(event) {
-    $('#actorSubmit').attr('data-disable-with');
-    debugger;
-    event.preventDefault();
-    let values = $(this).serialize();
-
-    let posting = $.post('/actors', values);
-    posting.done(function(data) {
-      $("#actorName").text(data.name);
-      $("#actorGender").text(data.gender);
-      $("#actorAge").text(data.age)
-    })
-    $('#actorSubmit').removeAttr('data-disable-with');
-  })
-})
