@@ -33,7 +33,6 @@ function loadCharacters(movie_id) {
       url: `/movies/${movie_id}/characters.json`,
       dataType: 'json',
       success: function(characters) {
-
         characters
           .sort(a, b) => a.name.localeCompare(b.name))
           .forEach(function(character) {
