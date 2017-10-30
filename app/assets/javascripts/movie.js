@@ -44,7 +44,6 @@ function loadCharacters(movie_id) {
   }
 }
 
-// does flip through because I am using sample?
 function randomMovie() {
   let newMovie = Math.floor(Math.random() * (moviesLength() + 1))
   $.get(`/movies/${newMovie}.json`, function(data) {
