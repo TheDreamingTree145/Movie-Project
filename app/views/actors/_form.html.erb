@@ -37,22 +37,17 @@
 <script> // Does this have to be here and not in JS file? Would not hit on the first time around if in the actor JS file
   $(function () {
     $('#new_actor').submit(function(event) {
-      $('#actorSubmit').attr('data-disable-with')
+
       event.preventDefault();
+      const form = this;
+      const paramsString = $(form).serialize();
 
-      let values = $(this).serialize();
-
-      let posting = $.post('/actors', values);
-
-      posting.done(function(data) {
-        let actorId = data.id;
-        let actorName = data.name;
-        let actorGender = data.gender;
-        let actorAge = data.age
-        let actor = new Actor(actorId, actorName, actorGender, actorAge);
-        actor.actorDetails();
-      })
-      $('#actorSubmit').removeAttr('data-disable-with')
+      $.post('/actors', paramsString)
+        .done(function(actorAttributes) {
+          const actor = new Actor(actorAttributes.id, actorAttributes.name, actorAttributes.gender, actorAttributes.age);
+          actor.actorDetails();
+          form.reset()
+        })
     })
   })
 </script>

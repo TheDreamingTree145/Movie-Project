@@ -7,7 +7,7 @@ class Movie {
     this.awards = awards;
     this.createdBy = createdBy;
   }
-  movieDetails() {
+  renderMovieDetails() {
     $('#random-title-link')[0].href = (`/movies/${this.id}`)
     $('#random-title-link').text(this.title);
     $('.releaseDate').text(this.releaseDate); // How to do with null values in these fields
@@ -33,9 +33,12 @@ function loadCharacters(movie_id) {
       url: `/movies/${movie_id}/characters.json`,
       dataType: 'json',
       success: function(characters) {
-        characters.forEach(function(character) {
-          $('#movie-characters-' + character.movie.id).append(`<li>${character.name} Played By: <a href="/actors/${character.actor.id}">${character.actor.name}</li>`)
-        })
+
+        characters
+          .sort(a, b) => a.name.localeCompare(b.name))
+          .forEach(function(character) {
+            $('#movie-characters-' + character.movie.id).append(`<li>${character.name} Played By: <a href="/actors/${character.actor.id}">${character.actor.name}</li>`)
+          })
       },
       error: function(request, status, error) {
         alert("There has been an error loading the characters");
@@ -49,6 +52,6 @@ function randomMovie() {
   $.get(`/movies/${newMovie}.json`, function(data) {
     // not really sure of the point of this? Because I'm not creating object when instantiated in Rails or does that matter?
     let movie = new Movie(data.id, data.title, data.release_date, data.critic_rating, data.awards, data.created_by)
-    movie.movieDetails();
+    movie.renderMovieDetails();
   })
 }
